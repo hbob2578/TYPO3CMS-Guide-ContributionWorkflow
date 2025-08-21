@@ -1,0 +1,26 @@
+#!/bin/bash
+# Configuration script for TYPO3CMS-Guide-ContributionWorkflow
+
+set -e
+
+echo "Configuring TYPO3 Contribution Workflow documentation build..."
+
+# Create necessary directories
+echo "Creating build directories..."
+mkdir -p Documentation-GENERATED-temp
+
+# Check for required tools
+echo "Checking prerequisites..."
+
+if ! command -v docker &> /dev/null; then
+    echo "Warning: Docker not found. Docker is required for documentation building."
+    exit 1
+fi
+
+if ! command -v make &> /dev/null; then
+    echo "Warning: Make not found. Make is required for building."
+    exit 1
+fi
+
+echo "Configuration complete!"
+echo "You can now run 'make docs' to build documentation or 'make test-docs' to test."
